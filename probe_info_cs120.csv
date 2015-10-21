@@ -1,0 +1,13 @@
+1;builtin_activitydetectionprobe;act;most_probable_activity,most_probable_confidence;timestamp;s;R
+1;builtin_audiofeaturesprobe;aud;power,frequency,normalized_avg_magnitude;timestamp;s;R
+1;builtin_callstateprobe;cal;call_state;timestamp;s;R
+1;builtin_communicationeventprobe;coe;name,number,communication_type,communication_direction;comm_timestamp;ms;N
+1;builtin_fusedlocationprobe;fus;latitude,longitude,altitude,accuracy;timestamp;s;R
+1;sensors_lightsensorprobe_reading;lgt;lux,accuracy;event_timestamp;s;R
+1;builtin_screenprobe;scr;screen_active;timestamp;s;R
+1;builtin_toucheventsprobe;tch;last_touch_delay,touch_count;timestamp;s;N
+1;builtin_wifiaccesspointsprobe;wif;current_ssid,current_bssid,access_point_count;timestamp;s;R
+1;cs120_contactreport_contact;emc;name,contact_type,want_question,talk_question,loan_question,closeness;cs120_contactreport.timestamp;s;N
+1;cs120_locationreport_location;eml;place_name,place_type,visit_reason,accomplishment,pleasure;cs120_locationreport.timestamp;s;N
+1;cs120_moodreport;emm;stress,mood,energy,focus;timestamp;s;N
+1;cs120_sleepreport;ems;bed_time_ts,sleep_time_ts,wake_time_ts,up_time_ts,quality,day_type;timestamp;s;N

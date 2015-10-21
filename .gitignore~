@@ -1,4 +1,6 @@
 __pycache__
 log_python.txt
-*.csv
+subject*.csv
+probe_info.csv
 *.pyc
+*~

@@ -3,6 +3,7 @@ from copy import deepcopy
 import csv
 import os
 import sys
+import shutil
 
 from fetch_data import fetch_data
 
@@ -26,7 +27,10 @@ def pg2csv(database, subject, data_root_dir, subjects_info, probe_info, runtype,
 
     #Directory to put the extracted data in:
     dirname = data_root_dir+subject
-    if not os.path.exists(dirname):
+    if os.path.exists(dirname):
+        shutil.rmtree(dirname)
+        os.makedirs(dirname)
+    else:
         os.makedirs(dirname)
 
     #Set roughly the start and the end of the data timestamps
@@ -107,9 +111,10 @@ def pg2csv(database, subject, data_root_dir, subjects_info, probe_info, runtype,
             data_temp = fetch_data(database, subject_id, probe[0], probe[2], probe[3], t1, t2, False, server_address, usr, pwd)
             if not data_temp:
                 #print('\033[93m'+'PG2CSV: There is no data for probe \''+ probe[1] + '\'' + '\033[0m')
-                print('Subject '+subject+': There is no data for probe \''+ probe[1] + '\'')
+                msg = 'Subject '+subject+': There is no data for probe \''+ probe[1] + '\''
+                print(msg)
                 with open('log_python.txt','a') as logfile:
-                    logfile.write('Subject '+subject+': No data for probe \''+ probe[0] + '\'' + '\n')
+                    logfile.write(msg + '\n')
                 logfile.close()
                 continue
             num_columns = len(data_temp[0])
@@ -136,9 +141,17 @@ def pg2csv(database, subject, data_root_dir, subjects_info, probe_info, runtype,
                     #data_row.append(location_label)
                     data.append(data_row)
             if empty_entry>0:
-                print('Subject '+subject+': '+str(empty_entry)+" empty entries for probe \'"+probe[1]+"\' found and replaced with '-99'.")
+                msg = 'Subject '+subject+': '+str(empty_entry)+' empty entries for probe \''+probe[1]+'\' replaced with \'-99\''
+                print(msg)
+                with open('log_python.txt','a') as logfile:
+                    logfile.write(msg + '\n')
+                logfile.close()
             if duplicate_timestamps>0:
-                print('Subject '+subject+': '+str(duplicate_timestamps)+"/"+str(len(data_temp))+" duplicate timestamps for probe \'"+probe[1]+"\'")
+                msg = 'Subject '+subject+': '+str(duplicate_timestamps)+'/'+str(len(data_temp))+' duplicate timestamps for probe \''+probe[1]+'\' removed'
+                print(msg)
+                with open('log_python.txt','a') as logfile:
+                    logfile.write(msg + '\n')
+                logfile.close()
             #Dumping the gathered samples
             if runtype=='trial':
                 filename = dirname+'/'+probe[1]+'_trial%d.csv'%(j)
