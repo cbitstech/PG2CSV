@@ -3,10 +3,8 @@ from pg2csv import pg2csv
 import datetime
 import csv
 
-#subjects = ['TEST1','TEST2','TEST3','TEST4','TEST5','TEST6','TEST7']
-
 time_start = datetime.datetime(2015, 10, 15, 0, 0, 0)
-time_end = datetime.datetime(2015, 10, 20, 23, 59, 59)
+time_end = datetime.datetime(2015, 10, 26, 23, 59, 59)
 
 data_root_dir = '/Data/CS120/'
 
@@ -14,8 +12,8 @@ subjects_info = 'subject_info_cs120.csv'
 
 probe_info = 'probe_info_cs120.csv'
 
-server_address = '165.124.45.185'
-#server_address = '192.168.56.101'
+server_address = '165.124.45.185'   #mac server
+#server_address = '192.168.56.101'  #local server
 database = 'p20_flat'
 
 # all:      fetches all data from the start to the end date specified in 'subjects_info.csv'

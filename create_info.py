@@ -9,6 +9,6 @@ with open(info_out,'w') as csvout:
         for row in info_in:
             csvout.write(row[0])
             csvout.write(';')
-            csvout.write(row[5])
+            csvout.write(row[6])
             csvout.write('\n')
 csvout.close()
