@@ -4,7 +4,7 @@ import datetime
 import csv
 
 time_start = datetime.datetime(2015, 10, 28, 0, 0, 0)
-time_end = datetime.datetime(2016, 1, 8, 23, 59, 59)
+time_end = datetime.datetime(2016, 1, 27, 23, 59, 59)
 
 data_root_dir = '/Data/CS120/'
 
