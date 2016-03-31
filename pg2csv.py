@@ -7,26 +7,30 @@ import shutil
 
 from fetch_data import fetch_data
 
-def pg2csv(database, subject, data_root_dir, subjects_info, probe_info, runtype, server_address, usr, pwd, time_start, time_end):
+def pg2csv(database, subject_id, subject_id_hashed, data_root_dir, probe_info, runtype, server_address, usr, pwd, time_start, time_end):
 
-    with open(subjects_info) as csvfile:
-        subject_info = csv.reader(csvfile, delimiter=';', quotechar='|')
-        for row in subject_info:
-            if row[0]==subject:
-                subject_id = row[1]
-                #year_start = int(row[2])
-                #month_start = int(row[3])
-                #day_start = int(row[4])
-                #hour_start = int(row[5])
-                #minute_start = int(row[6])
-                #year_end = int(row[7])
-                #month_end = int(row[8])
-                #day_end = int(row[9])
-                #hour_end = int(row[10])
-                #minute_end = int(row[11])
+    #with open(subjects_info) as csvfile:
+    #    subject_info = csv.reader(csvfile, delimiter=';', quotechar='|')
+    #    for row in subject_info:
+    #        if len(row)==2:
+    #            if row[0]==subject:
+    #                subject_id = row[1]
+    #                #year_start = int(row[2])
+    #                #month_start = int(row[3])
+    #                #day_start = int(row[4])
+    #                #hour_start = int(row[5])
+    #                #minute_start = int(row[6])
+    #                #year_end = int(row[7])
+    #                #month_end = int(row[8])
+    #                #day_end = int(row[9])
+    #                #hour_end = int(row[10])
+    #                #minute_end = int(row[11])
+    #        else:
+    #            subject_id = subject
+    #            print subject_id
 
     #Directory to put the extracted data in:
-    dirname = data_root_dir+subject
+    dirname = data_root_dir+subject_id
     if os.path.exists(dirname):
         shutil.rmtree(dirname)
         os.makedirs(dirname)
@@ -58,7 +62,7 @@ def pg2csv(database, subject, data_root_dir, subjects_info, probe_info, runtype,
     # Numbers are stored in miliseconds here since the sensor timestamps are in ms.
 
     if runtype=='trial':
-        triggers = fetch_data(database, subject_id, 'ActivityLog', 'FEATURE_VALUE', 'timestamp', start_all_ts, end_all_ts, False, server_address, usr, pwd)
+        triggers = fetch_data(database, subject_id_hashed, 'ActivityLog', 'FEATURE_VALUE', 'timestamp', start_all_ts, end_all_ts, False, server_address, usr, pwd)
         start = []
         end = []
         for row in triggers:
@@ -81,9 +85,6 @@ def pg2csv(database, subject, data_root_dir, subjects_info, probe_info, runtype,
     with open('log_python.txt','a') as logfile:
         logfile.write('\n')
     logfile.close()
-
-    #print('Subject: '+subject)
-    #print('Start: ' + str(start) + " End: " + str(end))
 
     # cut-off time in miliseconds at the beginning and the end
     clip_begin = 0
@@ -108,10 +109,10 @@ def pg2csv(database, subject, data_root_dir, subjects_info, probe_info, runtype,
                 t1 = float(t1*1000000000.0)
                 t2 = float(t2*1000000000.0)
             #print(probe)
-            data_temp = fetch_data(database, subject_id, probe[0], probe[2], probe[3], t1, t2, False, server_address, usr, pwd)
+            data_temp = fetch_data(database, subject_id_hashed, probe[0], probe[2], probe[3], t1, t2, False, server_address, usr, pwd)
             if not data_temp:
                 #print('\033[93m'+'PG2CSV: There is no data for probe \''+ probe[1] + '\'' + '\033[0m')
-                msg = 'Subject '+subject+': There is no data for probe \''+ probe[1] + '\''
+                msg = 'Subject '+subject_id+': There is no data for probe \''+ probe[1] + '\''
                 print(msg)
                 with open('log_python.txt','a') as logfile:
                     logfile.write(msg + '\n')
@@ -141,13 +142,13 @@ def pg2csv(database, subject, data_root_dir, subjects_info, probe_info, runtype,
                     #data_row.append(location_label)
                     data.append(data_row)
             if empty_entry>0:
-                msg = 'Subject '+subject+': '+str(empty_entry)+' empty entries for probe \''+probe[1]+'\' replaced with \'-99\''
+                msg = 'Subject '+subject_id+': '+str(empty_entry)+' empty entries for probe \''+probe[1]+'\' replaced with \'-99\''
                 print(msg)
                 with open('log_python.txt','a') as logfile:
                     logfile.write(msg + '\n')
                 logfile.close()
             if duplicate_timestamps>0:
-                msg = 'Subject '+subject+': '+str(duplicate_timestamps)+'/'+str(len(data_temp))+' duplicate timestamps for probe \''+probe[1]+'\' removed'
+                msg = 'Subject '+subject_id+': '+str(duplicate_timestamps)+'/'+str(len(data_temp))+' duplicate timestamps for probe \''+probe[1]+'\' removed'
                 print(msg)
                 with open('log_python.txt','a') as logfile:
                     logfile.write(msg + '\n')

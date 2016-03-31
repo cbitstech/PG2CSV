@@ -1,7 +1,10 @@
 __pycache__
 log_python.txt
+extra_data.txt
+hardware.json
 subject*.csv
 probe_info.csv
 dashboard.csv
+dashboard2.csv
 *.pyc
 *~

@@ -2,13 +2,14 @@ import getpass
 from pg2csv import pg2csv
 import datetime
 import csv
+from copy import deepcopy
 
 time_start = datetime.datetime(2015, 10, 28, 0, 0, 0)
-time_end = datetime.datetime(2016, 2, 25, 23, 59, 59)
+time_end = datetime.datetime(2016, 3, 21, 23, 59, 59)
 
 data_root_dir = '/Data/CS120/'
 
-subjects_info = 'subject_info_cs120.csv'
+subjects_info = 'subject_info_cs120_extended2.csv'	# note: extended file is in use
 
 probe_info = 'probe_info_cs120.csv'
 
@@ -31,6 +32,6 @@ with open('log_python.txt','w') as logfile:
 logfile.close()
 
 with open(subjects_info) as csvfile:
-    subject_info = csv.reader(csvfile, delimiter=';', quotechar='|')
+    subject_info = csv.reader(csvfile, delimiter='\t', quotechar='|')
     for row in subject_info:
-		pg2csv(database, row[0], data_root_dir, subjects_info, probe_info, runtype, server_address, usr, pwd, time_start, time_end)
+		pg2csv(database, row[1], row[1], data_root_dir, probe_info, runtype, server_address, usr, pwd, time_start, time_end)
