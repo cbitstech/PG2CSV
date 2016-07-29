@@ -4,7 +4,7 @@ August 2015
 
 The PG2CSV package queries Purple Robot data from a PostgreSQL server and writes it into tab-separated CSV files.
 
-1. Prerequisites
+1. Prerequisites:
 
 Before running the scripts make sure you have the following packages installed:
 
@@ -13,12 +13,12 @@ Python 2.7.6 or higher
 Psychopgs 2 or higher - This package enables Python to connect to a PostgreSQL Server. Download it from here:
 http://initd.org/psycopg/download/
 
-2. Set the data server address
+2. Set the data server address:
 
 You need to set the data server address in the main.py script file:
 server_address = 'your_server_address'
 
-3. Determine which subjects and what dates/times are you querying
+3. Determine which subjects and what dates/times are you querying:
 
 'subject_info.csv' is a tab-separated CSV file containing information about which subjects and what time period for each subject are being queried.
 
@@ -29,7 +29,7 @@ Columns 6-7: Time (HH:mm) - the start time (the hour is in 24-hour format).
 Columns 8-10: Date (yyyy-mm-dd) - the end date 
 Columns 11-12: Time (HH:mm) - the end time (the hour is in 24-hour format).
 
-4. Determine which probes you are querying
+4. Determine which probes you are querying:
 
 'probes_info.csv' is a tab-separated CSV file containnig information about which probes and which attributes of each probe are being queried.
 
@@ -40,12 +40,12 @@ Column 4: Timestamp source: This determines the name of the table in the databas
 Column 5: Timestamp unit (s | ms): This is the timestamp unit that PR uses for each probe. Enter 's' for seconds and 'ms' for miliseconds. Check PR documentation for details.
 Column 6: Remove duplicates (R | N) - The option to remove datapoints that have the same timestamps. 'R': remove; 'N': do not remove.
 
-5. Set the output directory
+5. Set the output directory:
 
 Set where the data is going to be written in the main.py script:
 data_root_dir = 'destination_directory'
 
-6. Run the main script
+6. Run the main script:
 
 python main.py
 
