@@ -13,8 +13,7 @@ subjects_info = 'subject_info_cs120_extended2.csv'	# note: extended file is in u
 
 probe_info = 'probe_info_cs120.csv'
 
-server_address = '165.124.45.185'   #mac server
-#server_address = '192.168.56.101'  #local server
+server_address = '<SERVER IP ADDRESS>'
 database = 'p20_flat'
 
 # all:      fetches all data from the start to the end date specified in 'subjects_info.csv'
