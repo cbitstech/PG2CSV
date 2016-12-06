@@ -7,14 +7,11 @@ from copy import deepcopy
 time_start = datetime.datetime(2015, 10, 28, 0, 0, 0)
 time_end = datetime.datetime(2016, 12, 1, 23, 59, 59)
 
-data_root_dir = '/Data/'
-
-subjects_info = 'subject_info_cs120_extended2.csv'	# note: extended file is in use
-
-probe_info = 'probe_info_cs120.csv'
-
-server_address = '<SERVER ADDRESS'
-database = 'p20_flat'
+data_root_dir = '<DATA DIR>'
+subjects_info = '<SUBJECT INFO FILE>'
+probe_info = '<PROBE INFO FILE>'
+server_address = '<SERVER ADDRESS>'
+database = '<DATABASE NAME>'
 
 # all:      fetches all data from the start to the end date specified in 'subjects_info.csv'
 # trial:    fetches only data between subsequent 'start' and 'end' labels in 'ActivityLog'
