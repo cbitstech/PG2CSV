@@ -12,7 +12,7 @@ Before running the scripts make sure you have the following installed:
 
 ###2. Subject information
 
-Create a tab-separated values (TSV) file containing the following columns:
+Create a TSV file containing the following columns:
 
 **Column 1**: Subject's arbitrary ID - This will be used as the name of the folder containing each subject's data.
 
