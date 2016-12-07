@@ -1,8 +1,8 @@
-##Instructions for using the PG2CSV package
+##Instructions
 
 This package queries Purple Robot data from a PostgreSQL server and writes it into tab-separated values (TSV) files.
 
-###Requirements
+###Dependencies
 
 Before running the scripts make sure you have the following installed:
 
@@ -10,29 +10,9 @@ Before running the scripts make sure you have the following installed:
 
 * Psycopg 2 or higher - This package enables Python to connect to a PostgreSQL Server. Installation instructions can be found [here](http://initd.org/psycopg/docs/install.html#installation).
 
-###Setting the parameters
+###Creating subject information file
 
-Set the following parameters inside *main.py*: 
-
-* You will need a server address and database name to access the database. These will be set by the following variables:
-```python
-server_address = '<SERVER ADDRESS>'
-database = '<DATABASE NAME>'
-```
-
-* Set the location for the queried data to be stored:
-
-```python
-data_root_dir = '<DATA DIR>'
-```
-
-* Determine which subjects are queried. For this, you first need to create a file containing informaion on the subjects' arbitrary and actual hashed IDs, and then set put the file name in *main.py*:
-
-```python
-subjects_info = '<SUBJECT INFO FILE>'
-```
-	
-This *SUBJECT INFO FILE* should be a tab-separated values (TSV) containing the following columns:
+Create a tab-separated values (TSV) containing the following columns:
 
 **Column 1**: Subject's arbitrary ID - This will be used as the name of the folder containing each subject's data.
 
@@ -44,7 +24,9 @@ Columns 8-10: Date (yyyy-mm-dd) - the end date
 Columns 11-12: Time (HH:mm) - the end time (the hour is in 24-hour format).
  -->
 
-* Determine which probes you are querying, using another TSV file containing following columns:
+####Creating probe information file
+
+Create a TSV file which determine which probes are being queried. this file shoud contain the following columns:
 
 **Column 1**: Probe name - This is the name which is assigned by Purple Robot and used in the database for each probe.
 
@@ -62,22 +44,42 @@ Columns 11-12: Time (HH:mm) - the end time (the hour is in 24-hour format).
 
 **Column 6**: Remove duplicates (*R* | *N*): Option to remove data points that have the identical timestamps. *R*: remove; *N*: do not remove. If *R* is chosen, only the first data point out of data points with identical timestamps will be saved.
 
-These information should be written to a file and refered to as the following in *main.py*:
+###Setting the parameters
+
+Set the following parameters inside *main.py*: 
+
+* You will need a server address and database name to access the database. These will be set by the following variables:
+```python
+server_address = '<SERVER ADDRESS>'
+database = '<DATABASE NAME>'
+```
+
+* Set the location for the queried data to be stored:
+
+```python
+data_root_dir = '<DATA DIR>'
+```
+
+* point to the subject information file:
+
+```python
+subjects_info = '<SUBJECT INFO FILE>'
+```
+
+* Point to the probe information file:
 
 ```python
 probe_info = '<PROBE INFO FILE>'
 ```
 An example is given in *probes_info.csv*.
 
-5. Set the output directory:
-
-Set where the data is going to be written in *main.py*:
+* Set the output directory where the data is written:
 
 ```python
 data_root_dir = '<DATA DIR>'
 ```
 
-###Running the script
+###Run the script
 
 ```python
 python main.py
