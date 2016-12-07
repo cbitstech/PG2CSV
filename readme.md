@@ -1,6 +1,6 @@
 ##Instructions for using the PG2CSV package
 
-This package queries Purple Robot data from a PostgreSQL server and writes it into tab-separated CSV files.
+This package queries Purple Robot data from a PostgreSQL server and writes it into tab-separated values (TSV) files.
 
 ###Requirements
 
@@ -13,7 +13,7 @@ http://initd.org/psycopg/download/
 
 ###Setting the parameters
 
-Set the parameters inside the main.py file. 
+Set the parameters inside the *main.py* file. 
 
 * You will need a server address and database name to access the database. These will be set by the following variables:
 ```python
@@ -27,7 +27,7 @@ database = '<DATABASE NAME>'
 data_root_dir = '<DATA DIR>'
 ```
 
-* Determine which subjects and what dates/times you are querying. You need to create a file containing informaion on the subjects actual and hashed IDs, and then set it in the main.py file:
+* Determine which subjects and what dates/times you are querying. You need to create a file containing informaion on the subjects actual and hashed IDs, and then set it in *main.py*:
 
 ```python
 subjects_info = '<SUBJECT INFO FILE>'
@@ -49,25 +49,30 @@ Columns 11-12: Time (HH:mm) - the end time (the hour is in 24-hour format).
 
 **Column 1**: Probe name - This is the name which assigned by Purple Robot and used in the database for each probe.
 
-**Column 2**: Probe file name (xxx) - This should be an arbitrary, 3 letters long name. It will be used as the CSV file name in which the data will be written. Make sure each probe has a unique file name.
+**Column 2**: Probe file name (xxx) - This is an arbitrary, 3-letter name. It will be used as the TSV file name to which Purple Robot data will be written. Make sure each probe has a unique file name.
 
-**Column 3**: Attribute names (A,B,C,...) - These are the attributes of a probe that you want to query from (for example, you might want the X,Y,Z attributes of the accelerometer probe).
+**Column 3**: Attribute names, in the following format:
+```python
+<ATTRIBUTE 1>,<ATTRIBUTE 2>,...,<ATTRIBUTE N>
+```
+ These are the attributes of a probe that you want to query from. For example, for the GPS location probe, you might use 'latitude,longitude' as attributes.
 
-**Column 4**: Timestamp source: This determines the name of the table in the database that will be used as the source of timestamps (timestamps will be written to CSV files too). For most probes, this is going to be 'timestamp'. For some physical probes, it should be 'EVENT_TIMESTAMP'. Check PR documentation for details.
+**Column 4**: Timestamp source: This determines the name of the table in the database that will be used as the source of timestamps. These timestamps will be written to TSV files as well. For most probes, this is just *timestamp*. However, for some physical sensor probes, it is *EVENT_TIMESTAMP*. Check Purple Robot documentation for details.
 
-**Column 5**: Timestamp unit (s | ms): This is the timestamp unit that PR uses for each probe. Enter 's' for seconds and 'ms' for miliseconds. Check PR documentation for details.
+**Column 5**: Timestamp unit (*s* | *ms*): This is the timestamp unit that Purple Robot has used for each probe. Enter *s* for seconds and *ms* for miliseconds.
 
-**Column 6**: Remove duplicates (R | N) - The option to remove datapoints that have the same timestamps. 'R': remove; 'N': do not remove.
+**Column 6**: Remove duplicates (*R* | *N*): Option to remove data points that have the identical timestamps. *R*: remove; *N*: do not remove. If *R* is chosen, only the first data point out of data points with identical timestamps will be saved.
 
-An example is given in *probes_info.csv*. After creating the file, tell main.py where it is:
+These information should be written to a file and refered to as the following in *main.py*:
 
 ```python
 probe_info = '<PROBE INFO FILE>'
 ```
+An example is given in *probes_info.csv*.
 
 5. Set the output directory:
 
-Set where the data is going to be written in the main.py script:
+Set where the data is going to be written in *main.py*:
 
 ```python
 data_root_dir = '<DATA DIR>'
