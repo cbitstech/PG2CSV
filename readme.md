@@ -1,4 +1,4 @@
-##Instructions
+#Instructions
 
 This package queries Purple Robot data from a PostgreSQL server and writes it into tab-separated values (TSV) files.
 
@@ -24,7 +24,7 @@ Columns 8-10: Date (yyyy-mm-dd) - the end date
 Columns 11-12: Time (HH:mm) - the end time (the hour is in 24-hour format).
  -->
 
-####Creating probe information file
+###Creating probe information file
 
 Create a TSV file which determine which probes are being queried. this file shoud contain the following columns:
 
