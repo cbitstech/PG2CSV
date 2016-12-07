@@ -6,9 +6,9 @@ This package queries Purple Robot data from a PostgreSQL server and writes it in
 
 Before running the scripts make sure you have the following packages installed:
 
-Python 2.7.6 or higher
+* Python 2.7.6 or higher
 
-Psycopg 2 or higher - This package enables Python to connect to a PostgreSQL Server. Download it from here:
+* Psycopg 2 or higher - This package enables Python to connect to a PostgreSQL Server. Download it from here:
 http://initd.org/psycopg/download/
 
 ###Setting the parameters
@@ -21,13 +21,13 @@ server_address = '<SERVER ADDRESS>'
 database = '<DATABASE NAME>'
 ```
 
-2. Set the location for the queried data to be stored:
+* Set the location for the queried data to be stored:
 
 ```python
 data_root_dir = '<DATA DIR>'
 ```
 
-3. Determine which subjects and what dates/times you are querying. You need to create a file containing informaion on the subjects actual and hashed IDs, and then set it in the main.py file:
+* Determine which subjects and what dates/times you are querying. You need to create a file containing informaion on the subjects actual and hashed IDs, and then set it in the main.py file:
 
 ```python
 subjects_info = '<SUBJECT INFO FILE>'
