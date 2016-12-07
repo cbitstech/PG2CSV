@@ -55,7 +55,7 @@ Columns 11-12: Time (HH:mm) - the end time (the hour is in 24-hour format).
 ```python
 <ATTRIBUTE 1>,<ATTRIBUTE 2>,...,<ATTRIBUTE N>
 ```
- These are the attributes of a probe that you want to query from. For example, for the GPS location probe, you might use 'latitude,longitude' as attributes.
+ These are the attributes of a probe that you want to query from. For example, for the GPS location probe, you might use *latitude,longitude* as attributes.
 
 **Column 4**: Timestamp source: This determines the name of the table in the database that will be used as the source of timestamps. These timestamps will be written to TSV files as well. For most probes, this is just *timestamp*. However, for some physical sensor probes, it is *EVENT_TIMESTAMP*. Check Purple Robot documentation for details.
 
@@ -84,4 +84,4 @@ data_root_dir = '<DATA DIR>'
 python main.py
 ```
 
-You will be prompted for a username and password. These are *database* credentials, and will be provided to you by the database server administrators.
+You will be prompted for a username and password. These are the database credentials, and will be provided to you by the database server administrators.
