@@ -2,7 +2,7 @@
 
 This package queries Purple Robot data from a PostgreSQL server and writes it into tab-separated values (TSV) files.
 
-###Dependencies
+###1. Dependencies
 
 Before running the scripts make sure you have the following installed:
 
@@ -10,9 +10,9 @@ Before running the scripts make sure you have the following installed:
 
 * Psycopg 2 or higher - This package enables Python to connect to a PostgreSQL Server. Installation instructions can be found [here](http://initd.org/psycopg/docs/install.html#installation).
 
-###Creating subject information file
+###2. Creating subject information file
 
-Create a tab-separated values (TSV) containing the following columns:
+Create a tab-separated values (TSV) file containing the following columns:
 
 **Column 1**: Subject's arbitrary ID - This will be used as the name of the folder containing each subject's data.
 
@@ -24,9 +24,9 @@ Columns 8-10: Date (yyyy-mm-dd) - the end date
 Columns 11-12: Time (HH:mm) - the end time (the hour is in 24-hour format).
  -->
 
-###Creating probe information file
+###3. Creating probe information file
 
-Create a TSV file which determine which probes are being queried. this file shoud contain the following columns:
+Create a TSV file that determines which probes are being queried. This file should contain the following columns:
 
 **Column 1**: Probe name - This is the name which is assigned by Purple Robot and used in the database for each probe.
 
@@ -44,7 +44,7 @@ Create a TSV file which determine which probes are being queried. this file shou
 
 **Column 6**: Remove duplicates (*R* | *N*): Option to remove data points that have the identical timestamps. *R*: remove; *N*: do not remove. If *R* is chosen, only the first data point out of data points with identical timestamps will be saved.
 
-###Setting the parameters
+###4. Setting the parameters
 
 Set the following parameters inside *main.py*: 
 
@@ -60,7 +60,7 @@ database = '<DATABASE NAME>'
 data_root_dir = '<DATA DIR>'
 ```
 
-* point to the subject information file:
+* Point to the subject information file:
 
 ```python
 subjects_info = '<SUBJECT INFO FILE>'
@@ -79,8 +79,9 @@ An example is given in *probes_info.csv*.
 data_root_dir = '<DATA DIR>'
 ```
 
-###Run the script
+###5. Running the script
 
+Run the python script:
 ```python
 python main.py
 ```
