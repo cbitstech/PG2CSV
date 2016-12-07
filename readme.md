@@ -45,7 +45,7 @@ Columns 11-12: Time (HH:mm) - the end time (the hour is in 24-hour format).
 
 * Determine which probes you are querying in another tab-separated values (TSV) file, with the following columns:
 
-Column 1: Probe name - This is the name which assigned by Purple Robot and used in the database for each probe.
+	+ Column 1: Probe name - This is the name which assigned by Purple Robot and used in the database for each probe.
 
 Column 2: Probe file name (xxx) - This should be an arbitrary, 3 letters long name. It will be used as the CSV file name in which the data will be written. Make sure each probe has a unique file name.
 
