@@ -8,7 +8,7 @@ Before running the scripts make sure you have the following installed:
 
 * Python 2.7.6 or higher
 
-* Psycopg 2 or higher - This package enables Python to connect to a PostgreSQL Server. Installation instructions can be found [here](http://initd.org/psycopg/docs/install.html#installation).
+* Psycopg 2 or higher - This package enables Python to connect to a PostgreSQL server. Installation instructions can be found [here](http://initd.org/psycopg/docs/install.html#installation).
 
 ###2. Subject information
 
