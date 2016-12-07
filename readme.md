@@ -32,7 +32,7 @@ data_root_dir = '<DATA DIR>'
 ```python
 subjects_info = '<SUBJECT INFO FILE>'
 ```
-This will be a tab-separated file with the following columns:
+	This will be a tab-separated file with the following columns:
 
 	+ Column 1: Subject ID - This is arbitrary and will be used as the name of the folder containing each subject's data.
 
