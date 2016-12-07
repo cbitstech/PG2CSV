@@ -16,7 +16,6 @@ http://initd.org/psycopg/download/
 Set the parameters inside the main.py file. 
 
 1. You will need a server address and database name to access the database. These will be set by the following variables:
-
 ```python
 server_address = '<SERVER ADDRESS>'
 database = '<DATABASE NAME>'
@@ -69,6 +68,6 @@ data_root_dir = '<DATA DIR>'
 
 ```python
 python main.py
-```python
+```
 
 You will be prompted for a username and password. These are *database* credentials, and will be provided to you by the database server administrators.
