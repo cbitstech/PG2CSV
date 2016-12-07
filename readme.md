@@ -4,16 +4,15 @@ This package queries Purple Robot data from a PostgreSQL server and writes it in
 
 ###Requirements
 
-Before running the scripts make sure you have the following packages installed:
+Before running the scripts make sure you have the following installed:
 
 * Python 2.7.6 or higher
 
-* Psycopg 2 or higher - This package enables Python to connect to a PostgreSQL Server. Download it from here:
-http://initd.org/psycopg/download/
+* Psycopg 2 or higher - This package enables Python to connect to a PostgreSQL Server. Installation instructions can be found [here](http://initd.org/psycopg/docs/install.html#installation).
 
 ###Setting the parameters
 
-Set the parameters inside the *main.py* file. 
+Set the following parameters inside *main.py*: 
 
 * You will need a server address and database name to access the database. These will be set by the following variables:
 ```python
@@ -27,17 +26,17 @@ database = '<DATABASE NAME>'
 data_root_dir = '<DATA DIR>'
 ```
 
-* Determine which subjects and what dates/times you are querying. You need to create a file containing informaion on the subjects actual and hashed IDs, and then set it in *main.py*:
+* Determine which subjects are queried. For this, you first need to create a file containing informaion on the subjects' arbitrary and actual hashed IDs, and then set put the file name in *main.py*:
 
 ```python
 subjects_info = '<SUBJECT INFO FILE>'
 ```
 	
-This will be a tab-separated file with the following columns:
+This *SUBJECT INFO FILE* should be a tab-separated values (TSV) containing the following columns:
 
-**Column 1**: Subject ID - This is arbitrary and will be used as the name of the folder containing each subject's data.
+**Column 1**: Subject's arbitrary ID - This will be used as the name of the folder containing each subject's data.
 
-**Column 2**: Database name - This is an MD5 Hash format of the subject's email address, which is used as the name of their database.
+**Column 2**: Subject's hashed ID - This is an MD5 hashed version of the subject's Google name, which is used as their name inside the database.
 
 <!-- Columns 3-5: Date (yyyy-mm-dd) - the start date 
 Columns 6-7: Time (HH:mm) - the start time (the hour is in 24-hour format).
@@ -45,9 +44,9 @@ Columns 8-10: Date (yyyy-mm-dd) - the end date
 Columns 11-12: Time (HH:mm) - the end time (the hour is in 24-hour format).
  -->
 
-* Determine which probes you are querying in another tab-separated values (TSV) file, with the following columns:
+* Determine which probes you are querying, using another TSV file containing following columns:
 
-**Column 1**: Probe name - This is the name which assigned by Purple Robot and used in the database for each probe.
+**Column 1**: Probe name - This is the name which is assigned by Purple Robot and used in the database for each probe.
 
 **Column 2**: Probe file name (xxx) - This is an arbitrary, 3-letter name. It will be used as the TSV file name to which Purple Robot data will be written. Make sure each probe has a unique file name.
 
