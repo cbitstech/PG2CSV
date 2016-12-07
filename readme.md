@@ -44,6 +44,8 @@ Create a TSV file that determines which probes are being queried. This file shou
 
 **Column 6**: Remove duplicates (*R* | *N*): Option to remove data points that have the identical timestamps. *R*: remove; *N*: do not remove. If *R* is chosen, only the first data point out of data points with identical timestamps will be saved.
 
+An example is given in *probes_info.csv*.
+
 ###4. Script parameters
 
 Set the following parameters in *main.py*: 
@@ -66,12 +68,11 @@ data_root_dir = '<DATA DIR>'
 subjects_info = '<SUBJECT INFO FILE>'
 ```
 
-* Point to the probe information file:
+* Point to the probe information file.
 
 ```python
 probe_info = '<PROBE INFO FILE>'
 ```
-An example is given in *probes_info.csv*.
 
 * Set the output directory where the data is written:
 
@@ -81,7 +82,7 @@ data_root_dir = '<DATA DIR>'
 
 ###5. Running the script
 
-Run the python script:
+Run the Python script:
 ```python
 python main.py
 ```
