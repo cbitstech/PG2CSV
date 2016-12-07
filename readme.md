@@ -32,11 +32,13 @@ data_root_dir = '<DATA DIR>'
 ```python
 subjects_info = '<SUBJECT INFO FILE>'
 ```
-	This will be a tab-separated file with the following columns:
+	
+This will be a tab-separated file with the following columns:
 
 	+ Column 1: Subject ID - This is arbitrary and will be used as the name of the folder containing each subject's data.
 
 	+ Column 2: Database name - This is an MD5 Hash format of the subject's email address, which is used as the name of their database.
+	
 <!-- Columns 3-5: Date (yyyy-mm-dd) - the start date 
 Columns 6-7: Time (HH:mm) - the start time (the hour is in 24-hour format).
 Columns 8-10: Date (yyyy-mm-dd) - the end date 
