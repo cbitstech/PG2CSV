@@ -10,7 +10,7 @@ Before running the scripts make sure you have the following installed:
 
 * Psycopg 2 or higher - This package enables Python to connect to a PostgreSQL Server. Installation instructions can be found [here](http://initd.org/psycopg/docs/install.html#installation).
 
-###2. Creating subject information file
+###2. Subject information
 
 Create a tab-separated values (TSV) file containing the following columns:
 
@@ -24,7 +24,7 @@ Columns 8-10: Date (yyyy-mm-dd) - the end date
 Columns 11-12: Time (HH:mm) - the end time (the hour is in 24-hour format).
  -->
 
-###3. Creating probe information file
+###3. Probe information
 
 Create a TSV file that determines which probes are being queried. This file should contain the following columns:
 
@@ -44,9 +44,9 @@ Create a TSV file that determines which probes are being queried. This file shou
 
 **Column 6**: Remove duplicates (*R* | *N*): Option to remove data points that have the identical timestamps. *R*: remove; *N*: do not remove. If *R* is chosen, only the first data point out of data points with identical timestamps will be saved.
 
-###4. Setting the parameters
+###4. Script parameters
 
-Set the following parameters inside *main.py*: 
+Set the following parameters in *main.py*: 
 
 * You will need a server address and database name to access the database. These will be set by the following variables:
 ```python
