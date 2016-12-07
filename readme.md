@@ -42,7 +42,7 @@ Create a TSV file that determines which probes are being queried. This file shou
 
 **Column 5**: Timestamp unit (*s* | *ms*): This is the timestamp unit that Purple Robot has used for each probe. Enter *s* for seconds and *ms* for miliseconds.
 
-**Column 6**: Remove duplicates (*R* | *N*): Option to remove data points that have the identical timestamps. *R*: remove; *N*: do not remove. If *R* is chosen, only the first data point out of data points with identical timestamps will be saved.
+**Column 6**: Remove duplicates (*R* | *N*): Option to remove data points that have the identical timestamps (*R*: remove; *N*: not remove). If *R* is chosen, only the first data point out of the data points with identical timestamps is saved, and the rest are removed.
 
 An example is given in *probes_info.csv*.
 
